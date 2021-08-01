@@ -44,11 +44,11 @@ class API:
 
     @staticmethod
     def put(*args, **kwargs) -> Callable:
-        return _action('PUT', *args, **kwargs)
+        return _action(['PUT'], *args, **kwargs)
 
     @staticmethod
     def trace(*args, **kwargs) -> Callable:
-        return _action('TRACE', *args, **kwargs)
+        return _action(['TRACE'], *args, **kwargs)
 
 @dataclass
 class ControllerABC(ABC):
