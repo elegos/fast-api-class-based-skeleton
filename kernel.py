@@ -10,4 +10,6 @@ def kernel(app: FastAPI) -> None:
     mathLib = Math()
 
     # Controllers
-    app.include_router(MathController(APIRouter(prefix='/math'), mathService=mathLib).register().apiRouter)
+    controllers = [MathController(APIRouter(prefix='/math'), mathService=mathLib)]
+    for controller in controllers:
+        app.include_router(controller.apiRouter)

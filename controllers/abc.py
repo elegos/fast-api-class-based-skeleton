@@ -41,8 +41,8 @@ class API:
 @dataclass
 class ControllerABC(ABC):
     apiRouter: APIRouter
-    
-    def register(self) -> 'ControllerABC':
+
+    def __post_init__(self):
         methods = [func for func in dir(self) if callable(getattr(self, func)) and not func.startswith('__')]
         for func in methods:
             method = getattr(self, func)
