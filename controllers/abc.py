@@ -1,6 +1,6 @@
 from abc import ABC
 from dataclasses import dataclass
-from typing import Any, Callable, List
+from typing import Callable, List
 
 from fastapi.routing import APIRouter
 
@@ -27,6 +27,14 @@ class API:
         return _action(['GET'], *args, **kwargs)
     
     @staticmethod
+    def head(*args, **kwargs) -> Callable:
+        return _action(['HEAD'], *args, **kwargs)
+    
+    @staticmethod
+    def options(*args, **kwargs) -> Callable:
+        return _action(['OPTIONS'], *args, **kwargs)
+    
+    @staticmethod
     def patch(*args, **kwargs) -> Callable:
         return _action(['PATCH'], *args, **kwargs)
 
@@ -37,6 +45,10 @@ class API:
     @staticmethod
     def put(*args, **kwargs) -> Callable:
         return _action('PUT', *args, **kwargs)
+
+    @staticmethod
+    def trace(*args, **kwargs) -> Callable:
+        return _action('TRACE', *args, **kwargs)
 
 @dataclass
 class ControllerABC(ABC):
