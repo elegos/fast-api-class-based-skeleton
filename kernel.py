@@ -1,7 +1,7 @@
-from fastapi.routing import APIRouter
-from controllers.math import MathController
 from fastapi import FastAPI
+from fastapi.routing import APIRouter
 
+from controllers.math import MathController
 from services import Math
 
 
